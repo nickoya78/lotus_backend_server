@@ -12,7 +12,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.get('/', (req, res) => {
-    res.send('typescript + express server');
+    res.send('typescript + express server + lotus app');
   });
 app.use('/auth', authRoutes);
 app.use(errorMiddleware);

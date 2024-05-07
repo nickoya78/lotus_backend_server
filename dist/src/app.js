@@ -13,7 +13,7 @@ const app = (0, express_1.default)();
 app.use((0, cors_1.default)());
 app.use(express_1.default.json());
 app.get('/', (req, res) => {
-    res.send('typescript + express server');
+    res.send('typescript + express server + lotus app');
 });
 app.use('/auth', authRoutes_1.default);
 app.use(errorMiddleware_1.errorMiddleware);
