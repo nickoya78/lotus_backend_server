@@ -8,5 +8,5 @@ const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
 const port = process.env.PORT || 8080;
 app_1.default.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
+    console.log(`Server is up and running on port ${port}`);
 });
