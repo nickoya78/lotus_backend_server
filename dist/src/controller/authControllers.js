@@ -42,6 +42,11 @@ exports.validateLogin = [
 ];
 const register = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
+        // Check if a user with the provided email already exists
+        const existingUser = yield client_1.prisma.user.findUnique({ where: { email: req.body.email } });
+        if (existingUser) {
+            return res.status(400).json({ error: 'A user with this email already exists' });
+        }
         // Hash the password
         const hashedPassword = yield (0, hashPassword_1.hashPassword)(req.body.password);
         // Create the user

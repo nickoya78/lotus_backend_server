@@ -31,6 +31,11 @@ export const validateLogin = [
 ];
 export const register = async (req: Request, res: Response) => {
   try {
+   // Check if a user with the provided email already exists
+   const existingUser = await prisma.user.findUnique({ where: { email: req.body.email } });
+   if (existingUser) {
+     return res.status(400).json({ error: 'A user with this email already exists' });
+   }
     // Hash the password
     const hashedPassword = await hashPassword(req.body.password);
 
