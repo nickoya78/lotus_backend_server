@@ -67,7 +67,13 @@ export const register = async (req: Request, res: Response) => {
     };
 
     // Send the email
-    await transporter.sendMail(mailOptions);
+    // await transporter.sendMail(mailOptions);
+    try {
+      await transporter.sendMail(mailOptions);
+    } catch (error) {
+      console.error('Failed to send email:', error);
+      throw error;
+    }
 
     res.status(201).json({ user });
   } catch (error: any) {
@@ -112,8 +118,15 @@ export const resetPassword = async (req: Request, res: Response) => {
     };
 
     // Send the email
-    await transporter.sendMail(mailOptions);
+    // await transporter.sendMail(mailOptions);
+    try {
+      await transporter.sendMail(mailOptions);
+    } catch (error) {
+      console.error('Failed to send email:', error);
+      throw error;
+    }
 
+    
     res.json({ message: 'Password reset successful', resetToken });
   } catch (error: any) {
     res.status(500).json({ error: error.message });
