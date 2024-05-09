@@ -74,14 +74,7 @@ const register = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
             text: `Hi ${user.name}, welcome to Lotus app! We're glad you're here. Enjoy your stay!`,
         };
         // Send the email
-        // await transporter.sendMail(mailOptions);
-        try {
-            yield transporter.sendMail(mailOptions);
-        }
-        catch (error) {
-            console.error('Failed to send email:', error);
-            throw error;
-        }
+        yield transporter.sendMail(mailOptions);
         res.status(201).json({ user });
     }
     catch (error) {
@@ -124,14 +117,7 @@ const resetPassword = (req, res) => __awaiter(void 0, void 0, void 0, function* 
             text: `Your reset token is: ${resetToken}`,
         };
         // Send the email
-        // await transporter.sendMail(mailOptions);
-        try {
-            yield transporter.sendMail(mailOptions);
-        }
-        catch (error) {
-            console.error('Failed to send email:', error);
-            throw error;
-        }
+        yield transporter.sendMail(mailOptions);
         res.json({ message: 'Password reset successful', resetToken });
     }
     catch (error) {
